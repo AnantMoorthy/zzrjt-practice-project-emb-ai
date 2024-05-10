@@ -10,15 +10,16 @@ app = Flask("Sentiment Analyzer")
 """this is to avoid error - pylint."""
 @app.route("/sentimentAnalyzer")
 def sent_analyzer():
-    """Render HTML template."""
+    """this is to avoid error - pylint."""
     text_to_analyze = request.args.get('textToAnalyze')
     response = sentiment_analyzer(text_to_analyze)
     label = response['label']
     score = response['score']
     if label is None:
         return "Invalid input ! Try again."
-    else:
-        return {f"The given text is {label.split('_')[1]} with a score of {score}."}
+    if label is not None:
+        return f"The given text is {label.split('_')[1]} with a score of {score}."
+    return None
 
 @app.route("/")
 def render_index_page():
@@ -27,4 +28,4 @@ def render_index_page():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5005)
+    app.run(host="0.0.0.0", port=5009)
