@@ -9,3 +9,5 @@ class TestSentimentAnalyzer(unittest.TestCase):
         self.assertEqual(result_2['label'], 'SENT_NEGATIVE')
         result_3 = sentiment_analyzer('I am neutral on Python')
         self.assertEqual(result_3['label'], 'SENT_NEUTRAL')
+        
+unittest.main()
